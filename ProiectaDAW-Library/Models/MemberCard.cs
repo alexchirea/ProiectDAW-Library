@@ -1,7 +1,9 @@
 ﻿using System;
+using ProiectaDAW_Library.Models.Base;
+
 namespace ProiectaDAW_Library.Models
 {
-    public class MemberCard
+    public class MemberCard: BaseEntity
     {
         public string Code { get; set; }
         public DateTime IssuedAt { get; set; }

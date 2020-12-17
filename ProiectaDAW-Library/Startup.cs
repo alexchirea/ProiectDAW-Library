@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProiectaDAW_Library.Data;
 using ProiectaDAW_Library.Helpers;
+using ProiectaDAW_Library.Repositories;
+using ProiectaDAW_Library.Services;
 
 namespace ProiectaDAW_Library
 {
@@ -33,6 +35,13 @@ namespace ProiectaDAW_Library
             services.AddDbContext<ProiectDawData>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddTransient<IActivityRepository, ActivityRepository>();
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IMemberCardRepository, MemberCardRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

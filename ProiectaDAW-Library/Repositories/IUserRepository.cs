@@ -1,10 +1,12 @@
 ﻿using System;
+using ProiectaDAW_Library.Models;
+using ProiectaDAW_Library.Repositories.GenericRepositories;
+
 namespace ProiectaDAW_Library.Repositories
 {
-    public class IUserRepository
+    public interface IUserRepository: IGenericRepository<User>
     {
-        public IUserRepository()
-        {
-        }
+        User GetByUsernameAndPassword(string username, string password);
+        User GetById(Guid userId);
     }
 }

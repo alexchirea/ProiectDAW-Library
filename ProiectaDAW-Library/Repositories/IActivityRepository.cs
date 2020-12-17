@@ -5,9 +5,10 @@ using ProiectaDAW_Library.Repositories.GenericRepositories;
 
 namespace ProiectaDAW_Library.Repositories
 {
-    public interface IBookRepository : IGenericRepository<Book>
+    public interface IActivityRepository: IGenericRepository<Activity>
     {
-        List<Book> GetByTitle(string title);
-        List<Book> GetByAuthor(string author);
+        void create(Activity activity);
+        List<Activity> GetByUser(Guid userId);
+        List<Activity> GetByBook(Guid bookId);
     }
 }

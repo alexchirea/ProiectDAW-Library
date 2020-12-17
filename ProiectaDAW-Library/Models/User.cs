@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ProiectaDAW_Library.Models.Base;
+using ProiectaDAW_Library.Models.DTOs;
 
 namespace ProiectaDAW_Library.Models
 {
@@ -15,5 +16,15 @@ namespace ProiectaDAW_Library.Models
 
         [JsonIgnore]
         public string Password { get; set; }
+
+        public User(UserRegisterRequestDTO v)
+        {
+            FirstName = v.FirstName;
+            LastName = v.LastName;
+            Username = v.Username;
+            Password = v.Password;
+        }
+
+        public User() { }
     }
 }

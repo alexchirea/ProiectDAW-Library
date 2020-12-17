@@ -1,10 +1,12 @@
 ﻿using System;
+using ProiectaDAW_Library.Models;
+using ProiectaDAW_Library.Repositories.GenericRepositories;
+
 namespace ProiectaDAW_Library.Repositories
 {
-    public class IMemberCardRepository
+    public interface IMemberCardRepository: IGenericRepository<MemberCard>
     {
-        public IMemberCardRepository()
-        {
-        }
+        MemberCard GetByCode(string code);
+        MemberCard GetByUserId(string userId);
     }
 }
