@@ -1,0 +1,62 @@
+<div class="list row mt-5">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Cauta dupa numele autorului"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchAuthor()"
+        >
+          Cauta
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="refreshList()"
+        >
+          Reseteaza cautarea
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h2>Lista autori</h2><hr>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let author of authors; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveAuthor(author, i)"
+      >
+        {{ author.name }}
+      </li>
+    </ul>
+    <a class="btn btn-primary mt-3" routerLink="new">
+      Adauga
+    </a>
+
+  </div>
+  <div class="col-md-4">
+    <div *ngIf="currentAuthor">
+      <h2>Autor</h2><hr>
+      <div>
+        <label><strong>Nume:</strong></label> {{ currentAuthor.name }}
+      </div>
+      <a class="btn btn-warning" routerLink="view/{{ currentAuthor.id }}">
+        Editeaza
+      </a>
+      <a class="btn btn-danger ml-1" (click)="deleteAuthor(currentAuthor)">
+        Sterge
+      </a>
+    </div>
+
+    <div *ngIf="!currentAuthor">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div style="width: 400px; margin: auto;" class="mt-5">
+  <div *ngIf="currentAuthor" class="edit-form">
+    <h2>Detalii Autor</h2><hr>
+    <form>
+      <div class="form-group">
+        <label for="name">Nume</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [(ngModel)]="currentAuthor.name"
+          name="name"
+        />
+      </div>
+    </form>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      (click)="updateAuthor()"
+    >
+      Salveaza
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentAuthor">
+    <br />
+    <p>Datele autorului nu pot fi accesate!</p>
+  </div>
+</div>

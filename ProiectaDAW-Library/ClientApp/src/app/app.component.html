@@ -1,6 +1,18 @@
 <body>
-  <app-nav-menu></app-nav-menu>
-  <div class="container">
-    <router-outlet></router-outlet>
+
+  <div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">Biblioteca Online</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="authors" class="nav-link">Autori</a>
+        </li>
+      </div>
+    </nav>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+
 </body>

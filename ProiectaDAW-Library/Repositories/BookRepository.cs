@@ -13,12 +13,12 @@ namespace ProiectaDAW_Library.Repositories
 
         public List<Book> GetByAuthor(string author)
         {
-            return _table.Where(x => x.Author.Name.Contains(author)).ToList();
+            return _table.Where(x => x.Author.Name.ToLower().Contains(author.ToLower())).ToList();
         }
 
         public List<Book> GetByTitle(string title)
         {
-            return _table.Where(x => x.Title.Contains(title)).ToList();
+            return _table.Where(x => x.Title.ToLower().Contains(title.ToLower())).ToList();
         }
     }
 }

@@ -1,0 +1,21 @@
+<div style="width: 400px; margin: auto;" class="mt-5">
+  <div class="submit-form">
+    <h2>Adauga Autor</h2><hr>
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="title">Nume</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="author.name"
+          name="name"
+        />
+      </div>
+
+
+      <button (click)="saveAuthor()" class="btn btn-success">Salveaza</button>
+    </div>
+  </div>
+</div>

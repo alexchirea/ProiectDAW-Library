@@ -36,6 +36,8 @@ namespace ProiectaDAW_Library
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IAuthorService, AuthorService>();
 
             services.AddTransient<IActivityRepository, ActivityRepository>();
             services.AddTransient<IAuthorRepository, AuthorRepository>();
@@ -66,6 +68,10 @@ namespace ProiectaDAW_Library
             }
 
             app.UseRouting();
+            app.UseMiddleware<JWTMiddleware>();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
