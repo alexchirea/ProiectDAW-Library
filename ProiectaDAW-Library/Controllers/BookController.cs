@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http.Cors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProiectaDAW_Library.Models;
 using ProiectaDAW_Library.Models.DTOs;
 using ProiectaDAW_Library.Services;
 
@@ -12,6 +14,7 @@ namespace ProiectaDAW_Library.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BookController: ControllerBase
     {
         private readonly IBookService _bookService;
@@ -31,19 +34,22 @@ namespace ProiectaDAW_Library.Controllers
         [HttpGet]
         public IActionResult GetAll(string name)
         {
-            return Ok(_bookService.GetAll());
+            List<BookResponseDTO> books = _bookService.GetAll().Select(x => new BookResponseDTO(x)).ToList();
+            return Ok(books);
         }
 
         [HttpGet("title/{title}")]
         public IActionResult GetByName(string title)
         {
-            return Ok(_bookService.GetByTitle(title));
+            List<BookResponseDTO> books = _bookService.GetByTitle(title).Select(x => new BookResponseDTO(x)).ToList();
+            return Ok(books);
         }
 
         [HttpGet("author/{author}")]
         public IActionResult GetByTitle(string author)
         {
-            return Ok(_bookService.GetByAuthor(author));
+            List<BookResponseDTO> books = _bookService.GetByAuthor(author).Select(x => new BookResponseDTO(x)).ToList();
+            return Ok(books);
         }
 
         [HttpGet("id/{id}")]

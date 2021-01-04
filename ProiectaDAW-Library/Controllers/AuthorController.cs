@@ -39,13 +39,15 @@ namespace ProiectaDAW_Library.Controllers
         [HttpGet]
         public IActionResult GetAll(string name)
         {
-            return Ok(_authorService.GetAll());
+            List<AuthorResponseDTO> authors = _authorService.GetAll().Select(x => new AuthorResponseDTO(x)).ToList();
+            return Ok(authors);
         }
 
         [HttpGet("name/{name}")]
         public IActionResult GetByName(string name)
         {
-            return Ok(_authorService.GetByName(name));
+            List<AuthorResponseDTO> authors = _authorService.GetByName(name).Select(x => new AuthorResponseDTO(x)).ToList();
+            return Ok(authors);
         }
 
         [HttpPut("id/{id}")]

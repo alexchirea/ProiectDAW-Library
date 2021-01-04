@@ -12,7 +12,6 @@ export class AuthorsAddComponent implements OnInit {
   author = {
     name: ''
   };
-  submitted = false;
 
   constructor(private authorsService: AuthorsService,
               private router: Router) { }
@@ -30,18 +29,10 @@ export class AuthorsAddComponent implements OnInit {
         response => {
           this.router.navigate(['/authors'])
           console.log(response);
-          this.submitted = true;
         },
         error => {
           console.log(error);
         });
-  }
-
-  newTutorial(): void {
-    this.submitted = false;
-    this.author = {
-      name: ''
-    };
   }
 
 }
