@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from '../../../core/services/auth/auth.service';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../core/services/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
@@ -11,10 +11,11 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class LoginComponent {
   public hide = true;
-  public loginForm = this.fb.group({
-    Email: ['', Validators.email],
-    Password: ['', Validators.required]
-  });
+
+  user = {
+    email: '',
+    password: ''
+  };
 
   constructor(private fb: FormBuilder,
               private authenticationService: AuthService,
@@ -24,7 +25,11 @@ export class LoginComponent {
   }
 
   login() {
-    this.authenticationService.login(this.loginForm.value)
+    const data = {
+      email: this.user.email,
+      password: this.user.password
+    };
+    this.authenticationService.login(data)
       .subscribe(data => {
           console.log('Successfully logged in.', data);
           this.router.navigateByUrl('home');

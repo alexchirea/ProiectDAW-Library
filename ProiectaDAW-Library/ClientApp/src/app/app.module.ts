@@ -24,11 +24,17 @@ import {ToastrModule} from 'ngx-toastr';
       {path: 'home', component: HomeComponent, pathMatch: 'full'},
       {
         path: 'authors',
-        loadChildren: () => import('./authors/authors.module').then(m => m.AuthorsModule)
+        loadChildren: () => import('./authors/authors.module').then(m => m.AuthorsModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'books',
-        loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+        loadChildren: () => import('./books/books.module').then(m => m.BooksModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
       }
     ]),
     BrowserAnimationsModule

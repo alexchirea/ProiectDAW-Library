@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from '../../../core/services/auth/auth.service';
+import {AuthService} from '../../core/services/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 
@@ -11,10 +11,13 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
   public hide = true;
-  public registrationForm = this.fb.group({
-    Email: ['', Validators.email],
-    Password: ['', Validators.required]
-  });
+
+  user = {
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: ''
+  };
 
   constructor(private fb: FormBuilder,
               private authenticationService: AuthService,
@@ -27,7 +30,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authenticationService.register(this.registrationForm.value)
+    const data = {
+      email: this.user.email,
+      password: this.user.password,
+      firstName: this.user.firstName,
+      lastName: this.user.lastName
+    };
+    this.authenticationService.register(data)
       .subscribe(data => {
           console.log('Successfully registered', data);
           this.router.navigateByUrl('home');
