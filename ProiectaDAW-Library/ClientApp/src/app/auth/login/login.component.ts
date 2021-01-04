@@ -13,7 +13,7 @@ export class LoginComponent {
   public hide = true;
 
   user = {
-    email: '',
+    username: '',
     password: ''
   };
 
@@ -26,7 +26,7 @@ export class LoginComponent {
 
   login() {
     const data = {
-      email: this.user.email,
+      username: this.user.username,
       password: this.user.password
     };
     this.authenticationService.login(data)

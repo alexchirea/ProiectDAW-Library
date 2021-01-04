@@ -1,1 +1,65 @@
-<p>books-list works!</p>
+<div class="list row mt-5">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Cauta dupa numele autorului"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchBook()"
+        >
+          Cauta
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="refreshList()"
+        >
+          Reseteaza cautarea
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h2>Lista carti</h2><hr>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let book of books; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveBook(book, i)"
+      >
+        <b>{{ book.title }}</b> <br>de <i>{{ book.authorId }}</i> <br/>
+        Nr. copii: <span class="badge badge-primary">{{ book.noCopies }}</span>
+      </li>
+    </ul>
+    <a class="btn btn-primary mt-3" routerLink="new">
+      Adauga
+    </a>
+
+  </div>
+  <div class="col-md-4">
+    <div *ngIf="currentBook">
+      <h2>Carte</h2><hr>
+      <div>
+        <label><strong>Titlu:</strong></label> {{ currentBook.name }}<br>
+        <label><strong>Autor:</strong></label> {{ currentBook.authorId }}<br>
+        <label><strong>Nr. copii:</strong></label> {{ currentBook.noCopies }}
+      </div>
+      <a class="btn btn-warning" routerLink="view/{{ currentBook.id }}">
+        Editeaza
+      </a>
+      <a class="btn btn-danger ml-1" (click)="deleteBook(currentBook)">
+        Sterge
+      </a>
+    </div>
+
+    <div *ngIf="!currentBook">
+    </div>
+  </div>
+</div>

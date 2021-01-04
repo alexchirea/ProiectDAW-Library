@@ -20,8 +20,8 @@ export class AuthService {
   login(userCredentials): Observable<any> {
     return this.apiService.post<any>(`${this.endpoint}/login`, userCredentials).pipe(
       map((response: any) => {
-        if (response.success) {
-          localStorage.setItem('userProfile', response.userProfile);
+        if (response) {
+          localStorage.setItem('userProfile', response);
         }
       })
     );
@@ -29,7 +29,7 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const userProfile = localStorage.getItem('userProfile');
-    console.log(userProfile);
+    //console.log(userProfile);
     return !!userProfile;
   }
 

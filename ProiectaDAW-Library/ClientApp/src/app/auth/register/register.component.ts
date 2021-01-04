@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   public hide = true;
 
   user = {
-    email: '',
+    username: '',
     password: '',
     firstName: '',
     lastName: ''
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     const data = {
-      email: this.user.email,
+      username: this.user.username,
       password: this.user.password,
       firstName: this.user.firstName,
       lastName: this.user.lastName

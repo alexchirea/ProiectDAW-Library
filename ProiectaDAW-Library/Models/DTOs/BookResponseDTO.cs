@@ -13,7 +13,6 @@ namespace ProiectaDAW_Library.Models.DTOs
         public BookResponseDTO(Book book)
         {
             Title = book.Title;
-            Author = book.Author.Name;
             noCopies = book.noCopies;
             AuthorId = book.AuthorId;
         }
