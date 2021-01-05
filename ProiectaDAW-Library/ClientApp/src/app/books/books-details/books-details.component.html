@@ -1,1 +1,43 @@
-<p>books-details works!</p>
+<div style="width: 400px; margin: auto;" class="mt-5">
+  <div *ngIf="currentBook" class="edit-form">
+    <h2>Detalii Carte</h2><hr>
+    <form>
+      <div class="form-group">
+        <label for="title">Titlu</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentBook.title"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="title">Autor</label>
+        <select class="form-control" id="authorId" name="authorId" required [(ngModel)]="currentBook.authorId">
+          <option
+            *ngFor="let author of authors"
+            [ngValue]="author.id"
+            [selected]="author.id == currentBook.authorId"
+          >
+            {{ author.name }}
+          </option>
+        </select>
+      </div>
+    </form>
+
+    <button
+      type="submit"
+      class="btn btn-success"
+      (click)="updateBook()"
+    >
+      Salveaza
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentBook">
+    <br />
+    <p>Datele cartii nu pot fi accesate!</p>
+  </div>
+</div>

@@ -21,16 +21,19 @@ import {ToastrModule} from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot([
+      {path: '', component: HomeComponent},
       {path: 'home', component: HomeComponent, pathMatch: 'full'},
       {
         path: 'authors',
         loadChildren: () => import('./authors/authors.module').then(m => m.AuthorsModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
       },
       {
         path: 'books',
         loadChildren: () => import('./books/books.module').then(m => m.BooksModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard]
       },
       {
         path: 'auth',

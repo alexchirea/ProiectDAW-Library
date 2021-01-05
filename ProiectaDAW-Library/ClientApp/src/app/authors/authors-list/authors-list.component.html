@@ -46,7 +46,8 @@
     <div *ngIf="currentAuthor">
       <h2>Autor</h2><hr>
       <div>
-        <label><strong>Nume:</strong></label> {{ currentAuthor.name }}
+        <label><strong>Nume:</strong></label> {{ currentAuthor.name }} <br>
+        <label><strong>Nr. carti:</strong></label> {{ currentAuthor.books.length }}
       </div>
       <a class="btn btn-warning" routerLink="view/{{ currentAuthor.id }}">
         Editeaza

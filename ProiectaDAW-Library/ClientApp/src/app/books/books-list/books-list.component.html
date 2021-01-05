@@ -5,18 +5,25 @@
         type="text"
         class="form-control"
         placeholder="Cauta dupa numele autorului"
-        [(ngModel)]="name"
+        [(ngModel)]="title"
       />
       <div class="input-group-append">
         <button
-          class="btn btn-outline-secondary"
+          class="btn btn-outline-primary"
           type="button"
           (click)="searchBook()"
         >
-          Cauta
+          Cauta dupa titlul cartii
         </button>
         <button
-          class="btn btn-outline-secondary"
+          class="btn btn-outline-success"
+          type="button"
+          (click)="searchBooByAuthor()"
+        >
+          Cauta dupa autor
+        </button>
+        <button
+          class="btn btn-outline-danger"
           type="button"
           (click)="refreshList()"
         >
@@ -34,7 +41,7 @@
         [class.active]="i == currentIndex"
         (click)="setActiveBook(book, i)"
       >
-        <b>{{ book.title }}</b> <br>de <i>{{ book.authorId }}</i> <br/>
+        <b>{{ book.title }}</b> <br>de <i>{{ book.author.name }}</i> <br/>
         Nr. copii: <span class="badge badge-primary">{{ book.noCopies }}</span>
       </li>
     </ul>
@@ -47,8 +54,8 @@
     <div *ngIf="currentBook">
       <h2>Carte</h2><hr>
       <div>
-        <label><strong>Titlu:</strong></label> {{ currentBook.name }}<br>
-        <label><strong>Autor:</strong></label> {{ currentBook.authorId }}<br>
+        <label><strong>Titlu:</strong></label> {{ currentBook.title }}<br>
+        <label><strong>Autor:</strong></label> {{ currentBook.author.name }}<br>
         <label><strong>Nr. copii:</strong></label> {{ currentBook.noCopies }}
       </div>
       <a class="btn btn-warning" routerLink="view/{{ currentBook.id }}">

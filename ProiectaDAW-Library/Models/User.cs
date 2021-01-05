@@ -11,8 +11,10 @@ namespace ProiectaDAW_Library.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
-        public MemberCard MemberCard { get; set; }
-        public ICollection<Activity> Activities { get; set; }
+        public virtual MemberCard MemberCard { get; set; }
+        public virtual List<Activity> Activities { get; set; } = new List<Activity>();
+
+        public bool isAdmin {get; set;}
 
         [JsonIgnore]
         public string Password { get; set; }
@@ -25,6 +27,8 @@ namespace ProiectaDAW_Library.Models
             Password = v.Password;
         }
 
-        public User() { }
+        public User() { 
+            isAdmin = false;
+        }
     }
 }

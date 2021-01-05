@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ProiectaDAW_Library.Models;
 
 namespace ProiectaDAW_Library.Data
@@ -15,6 +16,11 @@ namespace ProiectaDAW_Library.Data
         public DbSet<Book> Books { get; set; }
         public DbSet<MemberCard >MemberCards { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -41,6 +47,11 @@ namespace ProiectaDAW_Library.Data
                 .HasOne<User>(act => act.User)
                 .WithMany(u => u.Activities)
                 .HasForeignKey(act => act.UserId);
+
+            // unique username
+            builder.Entity<User>()
+                .HasAlternateKey(u => u.Username)
+                .HasName("AlternateKey_Username");
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ProiectaDAW_Library.Models.DTOs
         public string LastName { get; set; }
         public string Username { get; set; }
         public string Token { get; set; }
+        public bool isAdmin {get; set;}
 
         public UserResponseDTO(User user, string token)
         {
@@ -16,6 +17,7 @@ namespace ProiectaDAW_Library.Models.DTOs
             LastName = user.LastName;
             Username = user.Username;
             Token = token;
+            isAdmin = user.isAdmin;
         }
     }
 }

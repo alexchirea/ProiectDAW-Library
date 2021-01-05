@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ProiectaDAW_Library.Data;
@@ -9,9 +10,10 @@ using ProiectaDAW_Library.Data;
 namespace ProiectaDAW_Library.Migrations
 {
     [DbContext(typeof(ProiectDawData))]
-    partial class ProiectDawDataModelSnapshot : ModelSnapshot
+    [Migration("20210105105555_UserIsAdmin")]
+    partial class UserIsAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,16 +149,12 @@ namespace ProiectaDAW_Library.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Username")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("isAdmin")
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
-
-                    b.HasAlternateKey("Username")
-                        .HasName("AlternateKey_Username");
 
                     b.ToTable("Users");
                 });

@@ -34,22 +34,19 @@ namespace ProiectaDAW_Library.Controllers
         [HttpGet]
         public IActionResult GetAll(string name)
         {
-            List<BookResponseDTO> books = _bookService.GetAll().Select(x => new BookResponseDTO(x)).ToList();
-            return Ok(books);
+            return Ok(_bookService.GetAll());
         }
 
         [HttpGet("title/{title}")]
         public IActionResult GetByName(string title)
         {
-            List<BookResponseDTO> books = _bookService.GetByTitle(title).Select(x => new BookResponseDTO(x)).ToList();
-            return Ok(books);
+            return Ok(_bookService.GetByTitle(title));
         }
 
         [HttpGet("author/{author}")]
         public IActionResult GetByTitle(string author)
         {
-            List<BookResponseDTO> books = _bookService.GetByAuthor(author).Select(x => new BookResponseDTO(x)).ToList();
-            return Ok(books);
+            return Ok(_bookService.GetByAuthor(author));
         }
 
         [HttpGet("id/{id}")]

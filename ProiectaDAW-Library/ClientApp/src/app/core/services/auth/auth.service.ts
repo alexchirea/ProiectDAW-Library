@@ -22,6 +22,7 @@ export class AuthService {
       map((response: any) => {
         if (response) {
           localStorage.setItem('userProfile', response);
+          localStorage.setItem('isAdmin', response.isAdmin);
         }
       })
     );
@@ -31,6 +32,12 @@ export class AuthService {
     const userProfile = localStorage.getItem('userProfile');
     //console.log(userProfile);
     return !!userProfile;
+  }
+
+  isLoggedInAdmin(): boolean {
+    const userProfile = localStorage.getItem('userProfile');
+    const isAdmin = localStorage.getItem('isAdmin');
+    return !!userProfile && isAdmin == 'true';
   }
 
   logout() {

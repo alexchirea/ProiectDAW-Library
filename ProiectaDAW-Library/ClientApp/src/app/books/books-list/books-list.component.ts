@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from 'src/app/services/books.service';
+import { BooksService } from 'src/app/core/services/books/books.service';
 
 @Component({
   selector: 'app-books-list',
@@ -44,6 +44,18 @@ export class BooksListComponent implements OnInit {
 
   searchBook(): void {
     this.booksService.findByTitle(this.title)
+      .subscribe(
+        data => {
+          this.books = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+  searchBooByAuthor(): void {
+    this.booksService.findByAuthor(this.title)
       .subscribe(
         data => {
           this.books = data;

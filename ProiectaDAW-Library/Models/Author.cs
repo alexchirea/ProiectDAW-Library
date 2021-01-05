@@ -8,7 +8,7 @@ namespace ProiectaDAW_Library.Models
     public class Author: BaseEntity
     {
         public string Name { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
+        public virtual List<Book> Books { get; set; } = new List<Book>();
 
         public Author() { }
 

@@ -18,4 +18,8 @@ export class AppComponent {
     return this.authService.isLoggedIn();
   }
 
+  isAdmin(): boolean {
+    return this.authService.isLoggedInAdmin();
+  }
+
 }

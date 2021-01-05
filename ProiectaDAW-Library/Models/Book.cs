@@ -11,7 +11,7 @@ namespace ProiectaDAW_Library.Models
         public int noCopies { get; set; }
         public virtual Author Author { get; set; }
         public Guid AuthorId { get; set; }
-        public ICollection<Activity> Activities { get; set; }
+        public virtual List<Activity> Activities { get; set; } = new List<Activity>();
 
         public Book() { }
 

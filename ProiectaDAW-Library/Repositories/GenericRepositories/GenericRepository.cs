@@ -21,12 +21,12 @@ namespace ProiectaDAW_Library.Repositories.GenericRepositories
 
         public async Task<List<TEntity>> GetAll()
         {
-            return await _table.AsNoTracking().ToListAsync();
+            return await _table.ToListAsync();
         }
 
         public IQueryable<TEntity> GetAllAsQuerable()
         {
-            return _table.AsNoTracking();
+            return _table;
         }
 
         public void Create(TEntity entity)

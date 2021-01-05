@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthorsService } from 'src/app/services/authors.service';
+import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 
 @Component({
   selector: 'app-authors-list',
