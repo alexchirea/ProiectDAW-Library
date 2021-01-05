@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AuthorsListComponent implements OnInit {
   currentIndex = -1;
   name = '';
 
-  constructor(private authorsService: AuthorsService) { }
+  constructor(private authorsService: AuthorsService, private toastService: ToastrService,) { }
 
   ngOnInit() {
     this.retrieveAuthors();
@@ -59,6 +60,7 @@ export class AuthorsListComponent implements OnInit {
       this.authorsService.delete(author.id)
       .subscribe(
         data => {
+          this.toastService.success("Autorul a fost sters");
           this.refreshList();
         },
         error => {

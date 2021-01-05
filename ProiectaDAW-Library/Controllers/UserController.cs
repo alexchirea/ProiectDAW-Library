@@ -39,7 +39,7 @@ namespace ProiectaDAW_Library.Controllers
         public IActionResult Register(UserRegisterRequestDTO user)
         {
             _userService.Create(user);
-            return Ok();
+            return Ok("{}");
         }
     }
 }

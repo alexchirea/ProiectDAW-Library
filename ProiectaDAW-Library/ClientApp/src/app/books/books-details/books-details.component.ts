@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 import { BooksService } from 'src/app/core/services/books/books.service';
 
@@ -17,6 +18,7 @@ export class BooksDetailsComponent implements OnInit {
   constructor(private bookService: BooksService,
               private authorsService: AuthorsService,
               private route: ActivatedRoute,
+              private toastService: ToastrService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class BooksDetailsComponent implements OnInit {
     this.bookService.update(this.currentBook.id, this.currentBook)
       .subscribe(
         response => {
+          this.toastService.success("Cartea a fost salvata!");
           this.router.navigate(['/books'])
           // console.log(response);
           // this.message = 'The book was updated successfully!';

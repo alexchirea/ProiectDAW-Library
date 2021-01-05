@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 import { BooksService } from 'src/app/core/services/books/books.service';
 
@@ -20,7 +21,8 @@ export class BooksAddComponent implements OnInit {
 
   constructor(private authorsService: AuthorsService,
               private booksService: BooksService,
-              private router: Router) { }
+              private router: Router,
+              private toastService: ToastrService) { }
 
   ngOnInit() {
     this.retrieveAuthors();
@@ -38,6 +40,7 @@ export class BooksAddComponent implements OnInit {
     this.booksService.create(data)
       .subscribe(
         response => {
+          this.toastService.success("Cartea a fost salvata!");
           this.router.navigate(['/books'])
           console.log(response);
         },

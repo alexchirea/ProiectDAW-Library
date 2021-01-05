@@ -42,7 +42,8 @@
         (click)="setActiveBook(book, i)"
       >
         <b>{{ book.title }}</b> <br>de <i>{{ book.author.name }}</i> <br/>
-        Nr. copii: <span class="badge badge-primary">{{ book.noCopies }}</span>
+        <span class="badge badge-primary">{{ book.noCopies }}</span>
+        Data adaugarii: <span class="badge badge-warning">{{ book.dateCreated | date:"dd.MM.yyyy"}}</span>
       </li>
     </ul>
     <a class="btn btn-primary mt-3" routerLink="new">

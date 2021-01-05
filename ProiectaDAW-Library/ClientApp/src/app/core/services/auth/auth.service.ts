@@ -22,6 +22,7 @@ export class AuthService {
       map((response: any) => {
         if (response) {
           localStorage.setItem('userProfile', response);
+          localStorage.setItem('username', response.firstName + " " + response.lastName);
           localStorage.setItem('isAdmin', response.isAdmin);
         }
       })
@@ -32,6 +33,11 @@ export class AuthService {
     const userProfile = localStorage.getItem('userProfile');
     //console.log(userProfile);
     return !!userProfile;
+  }
+
+  getUsername(): string {
+    const username = localStorage.getItem('username');
+    return username;
   }
 
   isLoggedInAdmin(): boolean {
@@ -53,6 +59,8 @@ export class AuthService {
 
   onLogoutSuccess(): void {
     localStorage.removeItem('userProfile');
+    localStorage.removeItem('username');
+    localStorage.removeItem('isAdmin');
     this.router.navigate(['auth/login']);
   }
 

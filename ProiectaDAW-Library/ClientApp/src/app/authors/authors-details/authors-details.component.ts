@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AuthorsDetailsComponent implements OnInit {
 
   constructor(private authorService: AuthorsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private toastService: ToastrService) { }
 
   ngOnInit(): void {
     this.message = '';
@@ -37,6 +39,7 @@ export class AuthorsDetailsComponent implements OnInit {
     this.authorService.update(this.currentAuthor.id, this.currentAuthor)
       .subscribe(
         response => {
+          this.toastService.success("Autorul a fost salvat");
           this.router.navigate(['/authors'])
           // console.log(response);
           // this.message = 'The author was updated successfully!';

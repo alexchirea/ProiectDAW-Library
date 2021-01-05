@@ -47,7 +47,13 @@
       <h2>Autor</h2><hr>
       <div>
         <label><strong>Nume:</strong></label> {{ currentAuthor.name }} <br>
-        <label><strong>Nr. carti:</strong></label> {{ currentAuthor.books.length }}
+        <label><strong>Nr. carti:</strong></label> {{ currentAuthor | numarCarti }} <br>
+        <label><strong>Carti</strong></label>
+        <ul>
+          <li *ngFor="let book of currentAuthor.books">
+            {{book.title}} [{{book.noCopies | exemplare}}]
+          </li>
+        </ul>
       </div>
       <a class="btn btn-warning" routerLink="view/{{ currentAuthor.id }}">
         Editeaza

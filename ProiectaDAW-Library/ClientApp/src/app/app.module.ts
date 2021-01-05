@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HomeComponent} from './pages/home/home.component';
 import {AuthGuard} from './core/guards/auth.guard';
 import {ToastrModule} from 'ngx-toastr';
+import { ErrorInterceptor } from './core/interceptors/error-intercept';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,11 @@ import {ToastrModule} from 'ngx-toastr';
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

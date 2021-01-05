@@ -13,7 +13,7 @@
     <a routerLink="/books" class="btn btn-success ml-2">Autori</a>
     <a routerLink="/library" class="btn btn-warning ml-2">Imprumuta</a>
   </div>
-  <div class="row" *ngIf="!this.isAdmin()">
+  <div class="row" *ngIf="!this.isAdmin() && this.isLoggedIn()">
     <a routerLink="/library" class="btn btn-warning">Imprumuta</a>
   </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BooksService } from 'src/app/core/services/books/books.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class BooksListComponent implements OnInit {
   currentIndex = -1;
   title = '';
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private toastService: ToastrService) { }
 
   ngOnInit() {
     this.retrieveBooks();
@@ -71,6 +72,7 @@ export class BooksListComponent implements OnInit {
       this.booksService.delete(book.id)
       .subscribe(
         data => {
+          this.toastService.success("Cartea a fost stearsa");
           this.refreshList();
         },
         error => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthorsService } from 'src/app/core/services/authors/authors.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class AuthorsAddComponent implements OnInit {
   };
 
   constructor(private authorsService: AuthorsService,
-              private router: Router) { }
+              private router: Router,
+              private toastService: ToastrService) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,7 @@ export class AuthorsAddComponent implements OnInit {
     this.authorsService.create(data)
       .subscribe(
         response => {
+          this.toastService.success("Autorul a fost salvat");
           this.router.navigate(['/authors'])
           console.log(response);
         },

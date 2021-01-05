@@ -38,8 +38,10 @@ export class RegisterComponent implements OnInit {
     };
     this.authenticationService.register(data)
       .subscribe(data => {
-          console.log('Successfully registered', data);
           this.router.navigateByUrl('home');
+        },
+        () => {
+          this.toastService.error('The data provided is not valid!');
         }
       );
   }

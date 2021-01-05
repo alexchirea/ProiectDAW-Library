@@ -2,8 +2,12 @@
 
   <div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container">
       <a href="#" class="navbar-brand">Biblioteca Online</a>
-      <div class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="home" class="nav-link">Acasa</a>
+        </li>
         <li class="nav-item" *ngIf="this.isAdmin()">
           <a routerLink="authors" class="nav-link">Autori</a>
         </li>
@@ -16,7 +20,11 @@
         <li class="nav-item" *ngIf="this.isLoggedIn()">
           <a (click)="logout()" class="nav-link">Logout</a>
         </li>
+      </ul>
+      <div class="my-2 my-md-0" *ngIf="this.isLoggedIn()">
+        <span class="text-white">Bine ai venit, {{this.username}}!</span>
       </div>
+    </div>
     </nav>
 
     <div class="container">
