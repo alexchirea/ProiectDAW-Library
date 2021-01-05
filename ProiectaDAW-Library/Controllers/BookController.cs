@@ -69,5 +69,19 @@ namespace ProiectaDAW_Library.Controllers
             return Ok();
         }
 
+        [HttpPut("return/{id}")]
+        public IActionResult Return(Guid id)
+        {
+            _bookService.Return(id);
+            return Ok();
+        }
+
+        [HttpPut("borrow/{id}")]
+        public IActionResult Borrow(Guid id)
+        {
+            _bookService.Borrow(id);
+            return Ok();
+        }
+
     }
 }

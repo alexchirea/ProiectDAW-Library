@@ -1,1 +1,60 @@
-<p>library-list works!</p>
+<div class="list row mt-5">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Cauta dupa numele autorului"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="searchBook()"
+        >
+          Cauta dupa titlul cartii
+        </button>
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          (click)="searchBooByAuthor()"
+        >
+          Cauta dupa autor
+        </button>
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="refreshList()"
+        >
+          Reseteaza cautarea
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h2>Lista carti</h2><hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Titlu</th>
+          <th>Autor</th>
+          <th>Nr. copii</th>
+          <th>Actiuni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td><b>{{ book.title }}</b></td>
+          <td><i>{{ book.author.name }}</i></td>
+          <td>{{ book.noCopies }}</td>
+          <td>
+            <button (click)="borrow(book)" class="btn btn-sm btn-success">Imprumuta</button>
+            <button (click)="return(book)" class="btn btn-sm btn-warning ml-1">Returneaza</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

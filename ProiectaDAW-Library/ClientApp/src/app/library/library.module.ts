@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LibraryListComponent } from './library-list/library-list.component';
 import { LibraryRoutingModule } from './library-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +10,8 @@ import { LibraryRoutingModule } from './library-routing.module';
   declarations: [LibraryListComponent],
   imports: [
     LibraryRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class LibraryModule { }

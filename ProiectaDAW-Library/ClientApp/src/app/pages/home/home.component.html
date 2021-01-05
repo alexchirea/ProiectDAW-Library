@@ -3,6 +3,11 @@
     <h2>Biblioteca Online</h2>
     <p>Bine ai venit pe site! Aici poti imprumuta carti si le poti administra.</p>
   </div>
+  <div class="row" *ngIf="!this.isLoggedIn()">
+    Pentru a putea folosit aplicatia trebuie sa te conectezi sau sa te inregistrezi.
+    <a routerLink="/auth/login" class="btn btn-primary">Conectare</a>
+    <a routerLink="/auth/register" class="btn btn-success ml-2">Inregistrare</a>
+  </div>
   <div class="row" *ngIf="this.isAdmin()">
     <a routerLink="/authors" class="btn btn-primary">Autori</a>
     <a routerLink="/books" class="btn btn-success ml-2">Autori</a>

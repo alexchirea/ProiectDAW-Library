@@ -78,5 +78,25 @@ namespace ProiectaDAW_Library.Services
         {
             return _bookRepository.FindById(id);
         }
+
+        public void Return(Guid id) {
+            Book b = _bookRepository.FindById(id);
+            if (b != null) {
+                b.noCopies += 1;
+                _bookRepository.Update(b);
+                _bookRepository.Save();
+            }
+        }
+        public void Borrow(Guid id) {
+            Book b = _bookRepository.FindById(id);
+            if (b != null) {
+                if (b.noCopies > 0) {
+                    b.noCopies -= 1;
+                    _bookRepository.Update(b);
+                    _bookRepository.Save();
+                }
+            }
+        }
+
     }
 }

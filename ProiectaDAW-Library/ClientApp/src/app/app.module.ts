@@ -36,6 +36,11 @@ import {ToastrModule} from 'ngx-toastr';
         canActivateChild: [AuthGuard]
       },
       {
+        path: 'library',
+        loadChildren: () => import('./library/library.module').then(m => m.LibraryModule),
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
       }

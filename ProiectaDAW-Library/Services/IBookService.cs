@@ -14,5 +14,7 @@ namespace ProiectaDAW_Library.Services
         void Delete(Guid id);
         void Update(Guid id, BookRequestDTO bookRequest);
         Book findById(Guid id);
+        void Return(Guid id);
+        void Borrow(Guid id);
     }
 }
